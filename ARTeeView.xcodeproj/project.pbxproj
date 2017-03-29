@@ -17,6 +17,9 @@
 		FAFAB8A81E8C56BD0019E268 /* ARTeeViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */; };
 		FAFAB8B71E8C57160019E268 /* man_round_neck_tshirt_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */; };
 		FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8B91E8C57520019E268 /* opencv2.framework */; };
+		FAFAB8BC1E8C6C1E0019E268 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */; };
+		FAFAB8BE1E8C6C260019E268 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */; };
+		FAFAB8C01E8C6C2F0019E268 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		FAFAB8A91E8C56BD0019E268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = man_round_neck_tshirt_1.jpg; path = ../../Downloads/man_round_neck_tshirt_1.jpg; sourceTree = "<group>"; };
 		FAFAB8B91E8C57520019E268 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ARTeeView/opencv2.framework; sourceTree = "<group>"; };
+		FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFAB8C01E8C6C2F0019E268 /* AssetsLibrary.framework in Frameworks */,
+				FAFAB8BE1E8C6C260019E268 /* CoreMedia.framework in Frameworks */,
+				FAFAB8BC1E8C6C1E0019E268 /* AVFoundation.framework in Frameworks */,
 				FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +167,9 @@
 		FAFAB8B81E8C574E0019E268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */,
+				FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */,
+				FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */,
 				FAFAB8B91E8C57520019E268 /* opencv2.framework */,
 			);
 			name = Frameworks;
