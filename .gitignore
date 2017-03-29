@@ -6,6 +6,8 @@
 build/
 DerivedData/
 
+ARTeeView/opencv2.framework/**/*
+
 ## Various settings
 *.pbxuser
 !default.pbxuser

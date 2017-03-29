@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAFAB8841E8C56BD0019E268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8831E8C56BD0019E268 /* main.m */; };
+		FAFAB8871E8C56BD0019E268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8861E8C56BD0019E268 /* AppDelegate.m */; };
+		FAFAB88A1E8C56BD0019E268 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8891E8C56BD0019E268 /* ViewController.m */; };
+		FAFAB88D1E8C56BD0019E268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB88B1E8C56BD0019E268 /* Main.storyboard */; };
+		FAFAB88F1E8C56BD0019E268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB88E1E8C56BD0019E268 /* Assets.xcassets */; };
+		FAFAB8921E8C56BD0019E268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB8901E8C56BD0019E268 /* LaunchScreen.storyboard */; };
+		FAFAB89D1E8C56BD0019E268 /* ARTeeViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB89C1E8C56BD0019E268 /* ARTeeViewTests.m */; };
+		FAFAB8A81E8C56BD0019E268 /* ARTeeViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */; };
+		FAFAB8B71E8C57160019E268 /* man_round_neck_tshirt_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */; };
+		FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8B91E8C57520019E268 /* opencv2.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAFAB8991E8C56BD0019E268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAFAB8771E8C56BC0019E268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAFAB87E1E8C56BD0019E268;
+			remoteInfo = ARTeeView;
+		};
+		FAFAB8A41E8C56BD0019E268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAFAB8771E8C56BC0019E268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAFAB87E1E8C56BD0019E268;
+			remoteInfo = ARTeeView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FAFAB87F1E8C56BD0019E268 /* ARTeeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTeeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFAB8831E8C56BD0019E268 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAFAB8851E8C56BD0019E268 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAFAB8861E8C56BD0019E268 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAFAB8881E8C56BD0019E268 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FAFAB8891E8C56BD0019E268 /* ViewController.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = ViewController.m; sourceTree = "<group>"; };
+		FAFAB88C1E8C56BD0019E268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAFAB88E1E8C56BD0019E268 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAFAB8911E8C56BD0019E268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAFAB8931E8C56BD0019E268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFAB8981E8C56BD0019E268 /* ARTeeViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTeeViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFAB89C1E8C56BD0019E268 /* ARTeeViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTeeViewTests.m; sourceTree = "<group>"; };
+		FAFAB89E1E8C56BD0019E268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFAB8A31E8C56BD0019E268 /* ARTeeViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTeeViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTeeViewUITests.m; sourceTree = "<group>"; };
+		FAFAB8A91E8C56BD0019E268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = man_round_neck_tshirt_1.jpg; path = ../../Downloads/man_round_neck_tshirt_1.jpg; sourceTree = "<group>"; };
+		FAFAB8B91E8C57520019E268 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ARTeeView/opencv2.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAFAB87C1E8C56BD0019E268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB8951E8C56BD0019E268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB8A01E8C56BD0019E268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAFAB8761E8C56BC0019E268 = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8B51E8C57010019E268 /* Resources */,
+				FAFAB8811E8C56BD0019E268 /* ARTeeView */,
+				FAFAB89B1E8C56BD0019E268 /* ARTeeViewTests */,
+				FAFAB8A61E8C56BD0019E268 /* ARTeeViewUITests */,
+				FAFAB8801E8C56BD0019E268 /* Products */,
+				FAFAB8B81E8C574E0019E268 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FAFAB8801E8C56BD0019E268 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB87F1E8C56BD0019E268 /* ARTeeView.app */,
+				FAFAB8981E8C56BD0019E268 /* ARTeeViewTests.xctest */,
+				FAFAB8A31E8C56BD0019E268 /* ARTeeViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAFAB8811E8C56BD0019E268 /* ARTeeView */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8851E8C56BD0019E268 /* AppDelegate.h */,
+				FAFAB8861E8C56BD0019E268 /* AppDelegate.m */,
+				FAFAB8881E8C56BD0019E268 /* ViewController.h */,
+				FAFAB8891E8C56BD0019E268 /* ViewController.m */,
+				FAFAB88B1E8C56BD0019E268 /* Main.storyboard */,
+				FAFAB88E1E8C56BD0019E268 /* Assets.xcassets */,
+				FAFAB8901E8C56BD0019E268 /* LaunchScreen.storyboard */,
+				FAFAB8931E8C56BD0019E268 /* Info.plist */,
+				FAFAB8821E8C56BD0019E268 /* Supporting Files */,
+			);
+			path = ARTeeView;
+			sourceTree = "<group>";
+		};
+		FAFAB8821E8C56BD0019E268 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8831E8C56BD0019E268 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAFAB89B1E8C56BD0019E268 /* ARTeeViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB89C1E8C56BD0019E268 /* ARTeeViewTests.m */,
+				FAFAB89E1E8C56BD0019E268 /* Info.plist */,
+			);
+			path = ARTeeViewTests;
+			sourceTree = "<group>";
+		};
+		FAFAB8A61E8C56BD0019E268 /* ARTeeViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */,
+				FAFAB8A91E8C56BD0019E268 /* Info.plist */,
+			);
+			path = ARTeeViewUITests;
+			sourceTree = "<group>";
+		};
+		FAFAB8B51E8C57010019E268 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FAFAB8B81E8C574E0019E268 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFAB8B91E8C57520019E268 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAFAB87E1E8C56BD0019E268 /* ARTeeView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFAB8AC1E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeView" */;
+			buildPhases = (
+				FAFAB87B1E8C56BD0019E268 /* Sources */,
+				FAFAB87C1E8C56BD0019E268 /* Frameworks */,
+				FAFAB87D1E8C56BD0019E268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARTeeView;
+			productName = ARTeeView;
+			productReference = FAFAB87F1E8C56BD0019E268 /* ARTeeView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FAFAB8971E8C56BD0019E268 /* ARTeeViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFAB8AF1E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewTests" */;
+			buildPhases = (
+				FAFAB8941E8C56BD0019E268 /* Sources */,
+				FAFAB8951E8C56BD0019E268 /* Frameworks */,
+				FAFAB8961E8C56BD0019E268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAFAB89A1E8C56BD0019E268 /* PBXTargetDependency */,
+			);
+			name = ARTeeViewTests;
+			productName = ARTeeViewTests;
+			productReference = FAFAB8981E8C56BD0019E268 /* ARTeeViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FAFAB8A21E8C56BD0019E268 /* ARTeeViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAFAB8B21E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewUITests" */;
+			buildPhases = (
+				FAFAB89F1E8C56BD0019E268 /* Sources */,
+				FAFAB8A01E8C56BD0019E268 /* Frameworks */,
+				FAFAB8A11E8C56BD0019E268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAFAB8A51E8C56BD0019E268 /* PBXTargetDependency */,
+			);
+			name = ARTeeViewUITests;
+			productName = ARTeeViewUITests;
+			productReference = FAFAB8A31E8C56BD0019E268 /* ARTeeViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAFAB8771E8C56BC0019E268 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = teespring;
+				TargetAttributes = {
+					FAFAB87E1E8C56BD0019E268 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = R3FR5YL6XG;
+						ProvisioningStyle = Automatic;
+					};
+					FAFAB8971E8C56BD0019E268 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = R3FR5YL6XG;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FAFAB87E1E8C56BD0019E268;
+					};
+					FAFAB8A21E8C56BD0019E268 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = R3FR5YL6XG;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FAFAB87E1E8C56BD0019E268;
+					};
+				};
+			};
+			buildConfigurationList = FAFAB87A1E8C56BC0019E268 /* Build configuration list for PBXProject "ARTeeView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FAFAB8761E8C56BC0019E268;
+			productRefGroup = FAFAB8801E8C56BD0019E268 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAFAB87E1E8C56BD0019E268 /* ARTeeView */,
+				FAFAB8971E8C56BD0019E268 /* ARTeeViewTests */,
+				FAFAB8A21E8C56BD0019E268 /* ARTeeViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAFAB87D1E8C56BD0019E268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFAB8921E8C56BD0019E268 /* LaunchScreen.storyboard in Resources */,
+				FAFAB88F1E8C56BD0019E268 /* Assets.xcassets in Resources */,
+				FAFAB8B71E8C57160019E268 /* man_round_neck_tshirt_1.jpg in Resources */,
+				FAFAB88D1E8C56BD0019E268 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB8961E8C56BD0019E268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB8A11E8C56BD0019E268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAFAB87B1E8C56BD0019E268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFAB88A1E8C56BD0019E268 /* ViewController.m in Sources */,
+				FAFAB8871E8C56BD0019E268 /* AppDelegate.m in Sources */,
+				FAFAB8841E8C56BD0019E268 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB8941E8C56BD0019E268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFAB89D1E8C56BD0019E268 /* ARTeeViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAFAB89F1E8C56BD0019E268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAFAB8A81E8C56BD0019E268 /* ARTeeViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAFAB89A1E8C56BD0019E268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAFAB87E1E8C56BD0019E268 /* ARTeeView */;
+			targetProxy = FAFAB8991E8C56BD0019E268 /* PBXContainerItemProxy */;
+		};
+		FAFAB8A51E8C56BD0019E268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAFAB87E1E8C56BD0019E268 /* ARTeeView */;
+			targetProxy = FAFAB8A41E8C56BD0019E268 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FAFAB88B1E8C56BD0019E268 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFAB88C1E8C56BD0019E268 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FAFAB8901E8C56BD0019E268 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAFAB8911E8C56BD0019E268 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAFAB8AA1E8C56BD0019E268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAFAB8AB1E8C56BD0019E268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAFAB8AD1E8C56BD0019E268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ARTeeView",
+				);
+				INFOPLIST_FILE = ARTeeView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FAFAB8AE1E8C56BD0019E268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ARTeeView",
+				);
+				INFOPLIST_FILE = ARTeeView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FAFAB8B01E8C56BD0019E268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				INFOPLIST_FILE = ARTeeViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTeeView.app/ARTeeView";
+			};
+			name = Debug;
+		};
+		FAFAB8B11E8C56BD0019E268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				INFOPLIST_FILE = ARTeeViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARTeeView.app/ARTeeView";
+			};
+			name = Release;
+		};
+		FAFAB8B31E8C56BD0019E268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				INFOPLIST_FILE = ARTeeViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ARTeeView;
+			};
+			name = Debug;
+		};
+		FAFAB8B41E8C56BD0019E268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				INFOPLIST_FILE = ARTeeViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = teespring.ARTeeViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ARTeeView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAFAB87A1E8C56BC0019E268 /* Build configuration list for PBXProject "ARTeeView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFAB8AA1E8C56BD0019E268 /* Debug */,
+				FAFAB8AB1E8C56BD0019E268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAFAB8AC1E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFAB8AD1E8C56BD0019E268 /* Debug */,
+				FAFAB8AE1E8C56BD0019E268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FAFAB8AF1E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFAB8B01E8C56BD0019E268 /* Debug */,
+				FAFAB8B11E8C56BD0019E268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FAFAB8B21E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAFAB8B31E8C56BD0019E268 /* Debug */,
+				FAFAB8B41E8C56BD0019E268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAFAB8771E8C56BC0019E268 /* Project object */;
+}
