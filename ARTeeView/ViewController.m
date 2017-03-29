@@ -8,7 +8,7 @@
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <opencv2/videoio/cap_ios.h>
+#import <opencv2/highgui/cap_ios.h>
 #include <opencv2/imgproc/imgproc_c.h>
 #include <iostream>
 #include <AVFoundation/AVFoundation.h>
@@ -36,18 +36,16 @@ using namespace std;
     self.camera.grayscaleMode = NO;
     self.camera.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
-    Mat image = imread("man.png", CV_LOAD_IMAGE_COLOR);
-
-    UIImage *manImage = [UIImage imageNamed:@"man"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:manImage];
-    [self.view addSubview:_imageView];
-    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [_imageView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
-    [_imageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
-    [_imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
-    [_imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;\
- 
-    
+//    Mat image = imread("man.png", CV_LOAD_IMAGE_COLOR);
+//
+//    UIImage *manImage = [UIImage imageNamed:@"man"];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:manImage];
+//    [self.view addSubview:_imageView];
+//    _imageView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [_imageView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
+//    [_imageView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor].active = YES;
+//    [_imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
+//    [_imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -61,11 +59,7 @@ using namespace std;
 
 - (void)processImage:(Mat&)image {
     const char* str = [@"Toptal" cStringUsingEncoding: NSUTF8StringEncoding];
-    unsigned char* dataMat = image.data;
-    CvArr *something = (CvArr *)dataMat;
-    CvFont *font = new CvFont;
-    cvInitFont(new CvFont, CV_FONT_HERSHEY_PLAIN, 1.0, 8.0);
-    cvPutText(something, str, CvPoint(100,100), font, CvScalar(0,0,255));
+    cv::putText(image, str, cv::Point(100, 100), CV_FONT_HERSHEY_PLAIN, 2.0, cv::Scalar(0, 0, 255));
 }
 
 

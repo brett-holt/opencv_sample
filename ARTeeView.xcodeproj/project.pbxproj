@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E5481811E8C799400019485 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5481801E8C799400019485 /* opencv2.framework */; };
 		FAFAB8841E8C56BD0019E268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8831E8C56BD0019E268 /* main.m */; };
 		FAFAB8871E8C56BD0019E268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8861E8C56BD0019E268 /* AppDelegate.m */; };
 		FAFAB88A1E8C56BD0019E268 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8891E8C56BD0019E268 /* ViewController.m */; };
@@ -15,8 +16,6 @@
 		FAFAB8921E8C56BD0019E268 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB8901E8C56BD0019E268 /* LaunchScreen.storyboard */; };
 		FAFAB89D1E8C56BD0019E268 /* ARTeeViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB89C1E8C56BD0019E268 /* ARTeeViewTests.m */; };
 		FAFAB8A81E8C56BD0019E268 /* ARTeeViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */; };
-		FAFAB8B71E8C57160019E268 /* man_round_neck_tshirt_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */; };
-		FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8B91E8C57520019E268 /* opencv2.framework */; };
 		FAFAB8BC1E8C6C1E0019E268 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */; };
 		FAFAB8BE1E8C6C260019E268 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */; };
 		FAFAB8C01E8C6C2F0019E268 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */; };
@@ -40,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E5481801E8C799400019485 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		FAFAB87F1E8C56BD0019E268 /* ARTeeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTeeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFAB8831E8C56BD0019E268 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAFAB8851E8C56BD0019E268 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,8 +56,6 @@
 		FAFAB8A31E8C56BD0019E268 /* ARTeeViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARTeeViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFAB8A71E8C56BD0019E268 /* ARTeeViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARTeeViewUITests.m; sourceTree = "<group>"; };
 		FAFAB8A91E8C56BD0019E268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = man_round_neck_tshirt_1.jpg; path = ../../Downloads/man_round_neck_tshirt_1.jpg; sourceTree = "<group>"; };
-		FAFAB8B91E8C57520019E268 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ARTeeView/opencv2.framework; sourceTree = "<group>"; };
 		FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -71,7 +69,7 @@
 				FAFAB8C01E8C6C2F0019E268 /* AssetsLibrary.framework in Frameworks */,
 				FAFAB8BE1E8C6C260019E268 /* CoreMedia.framework in Frameworks */,
 				FAFAB8BC1E8C6C1E0019E268 /* AVFoundation.framework in Frameworks */,
-				FAFAB8BA1E8C57520019E268 /* opencv2.framework in Frameworks */,
+				7E5481811E8C799400019485 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +93,6 @@
 		FAFAB8761E8C56BC0019E268 = {
 			isa = PBXGroup;
 			children = (
-				FAFAB8B51E8C57010019E268 /* Resources */,
 				FAFAB8811E8C56BD0019E268 /* ARTeeView */,
 				FAFAB89B1E8C56BD0019E268 /* ARTeeViewTests */,
 				FAFAB8A61E8C56BD0019E268 /* ARTeeViewUITests */,
@@ -156,21 +153,13 @@
 			path = ARTeeViewUITests;
 			sourceTree = "<group>";
 		};
-		FAFAB8B51E8C57010019E268 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FAFAB8B61E8C57160019E268 /* man_round_neck_tshirt_1.jpg */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		FAFAB8B81E8C574E0019E268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7E5481801E8C799400019485 /* opencv2.framework */,
 				FAFAB8BF1E8C6C2F0019E268 /* AssetsLibrary.framework */,
 				FAFAB8BD1E8C6C260019E268 /* CoreMedia.framework */,
 				FAFAB8BB1E8C6C1E0019E268 /* AVFoundation.framework */,
-				FAFAB8B91E8C57520019E268 /* opencv2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -242,7 +231,7 @@
 				TargetAttributes = {
 					FAFAB87E1E8C56BD0019E268 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = R3FR5YL6XG;
+						DevelopmentTeam = JLQB28QUR7;
 						ProvisioningStyle = Automatic;
 					};
 					FAFAB8971E8C56BD0019E268 = {
@@ -286,7 +275,6 @@
 			files = (
 				FAFAB8921E8C56BD0019E268 /* LaunchScreen.storyboard in Resources */,
 				FAFAB88F1E8C56BD0019E268 /* Assets.xcassets in Resources */,
-				FAFAB8B71E8C57160019E268 /* man_round_neck_tshirt_1.jpg in Resources */,
 				FAFAB88D1E8C56BD0019E268 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,10 +451,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				DEVELOPMENT_TEAM = JLQB28QUR7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ARTeeView",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ARTeeView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -479,10 +468,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R3FR5YL6XG;
+				DEVELOPMENT_TEAM = JLQB28QUR7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ARTeeView",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ARTeeView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -560,6 +550,7 @@
 				FAFAB8AE1E8C56BD0019E268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAFAB8AF1E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewTests" */ = {
 			isa = XCConfigurationList;
@@ -568,6 +559,7 @@
 				FAFAB8B11E8C56BD0019E268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAFAB8B21E8C56BD0019E268 /* Build configuration list for PBXNativeTarget "ARTeeViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -576,6 +568,7 @@
 				FAFAB8B41E8C56BD0019E268 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
