@@ -69,47 +69,47 @@ RNG rng(12345);
     equalizeHist( frame_gray, frame_gray );
     
     //-- Detect faces
-    face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, cv::Size(30, 30) );
+    face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
     
-    for( size_t i = 0; i < faces.size(); i++ )
-    {
-        if (i > 0) { return; }
-        cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height + faces[i].height*1.2 );
-        ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
-        
-        
-        CGFloat imageHeight = self.teeView.image.size.height;
-        CGFloat faceHeight = faces[i].height;
-        CGFloat desiredImageHeight = faceHeight * 2.8
-        ;
-        CGFloat scaleFactor = imageHeight / desiredImageHeight;
-    
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"it executed");
-            CGFloat scaledImageWidth = self.teeView.image.size.width / scaleFactor;
-            CGFloat scaledImageHeight = self.teeView.image.size.height / scaleFactor;
-            CGFloat leftX = faces[i].x - faces[i].width*0.5 - scaledImageWidth * 0.45;
-            CGFloat topY = faces[i].y + faces[i].height * 0.45;
-            NSLog(@"%f", scaledImageHeight);
-            NSLog(@"%f", scaledImageWidth);
-            NSLog(@"%f", leftX);
-            NSLog(@"%f", topY);
-            self.teeView.frame = CGRectMake(leftX, topY, scaledImageWidth, scaledImageHeight);
-            [self.view bringSubviewToFront:self.teeView];
-        });
-    }
-    //-- Show what you got
 
-    self._img.contentMode = UIViewContentModeCenter;
-    self._img.image = [ImageUtils UIImageFromCVMat: frame];
-    NSLog(@"Hope it works ---------------");
+    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
+    dispatch_async(backgroundQueue, ^{
+        for( size_t i = 0; i < faces.size(); i++ )
+        {
+            if (i > 0) { return; }
+            cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height + faces[i].height*1.2 );
+           // ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
+            
+            
+            CGFloat imageHeight = self.teeView.image.size.height;
+            CGFloat faceHeight = faces[i].height;
+            CGFloat desiredImageHeight = faceHeight * 2.8
+            ;
+            CGFloat scaleFactor = imageHeight / desiredImageHeight;
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"it executed");
+                CGFloat scaledImageWidth = self.teeView.image.size.width / scaleFactor;
+                CGFloat scaledImageHeight = self.teeView.image.size.height / scaleFactor;
+                CGFloat leftX = faces[i].x - faces[i].width*0.5 - scaledImageWidth * 0.45;
+                CGFloat topY = faces[i].y + faces[i].height * 0.45;
+                NSLog(@"%f", scaledImageHeight);
+                NSLog(@"%f", scaledImageWidth);
+                NSLog(@"%f", leftX);
+                NSLog(@"%f", topY);
+                self.teeView.frame = CGRectMake(leftX, topY, scaledImageWidth, scaledImageHeight);
+                [self.view bringSubviewToFront:self.teeView];
+            });
+        }
+
+    });
 }
 
 - (void)processImage:(Mat&)image {
     self.count += 1;
-    if (self.count < 100) {
-        //NSLog(@"Count is less than 1000");
+    if (self.count % 2 != 0) {
+        return;
     }
     
     Mat frame = image;
