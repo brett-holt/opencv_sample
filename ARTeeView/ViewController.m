@@ -70,14 +70,17 @@ RNG rng(12345);
     
     //-- Detect faces
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
-    
 
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
     dispatch_async(backgroundQueue, ^{
         for( size_t i = 0; i < faces.size(); i++ )
         {
             if (i > 0) { return; }
-            cv::Point center( faces[i].x + faces[i].width*0.5, faces[i].y + faces[i].height + faces[i].height*1.2 );
+         
+            int estimatedShirtX = faces[i].x + faces[i].width*0.5;
+            int estimatedShirtY = faces[i].y + faces[i].height + faces[i].height*1.2;
+            
+            cv::Point center(estimatedShirtX, estimatedShirtY);
            // ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
             
             
