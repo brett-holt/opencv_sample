@@ -16,5 +16,7 @@
 @property int count;
 @property UIImageView* _img;
 
+@property UIImageView *teeView;
+
 @end
 
