@@ -45,7 +45,6 @@ RNG rng(12345);
     self.camera.grayscaleMode = NO;
     self.camera.delegate = self;
     
-    
     self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"tee"]];
     [self.view addSubview:self.teeView];
     self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
@@ -54,6 +53,14 @@ RNG rng(12345);
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.camera start];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Screen was touched");
+    self.shirtIndex += 1;
+    NSArray *shirts = @[@"tee", @"rubiks", @"hackathon", @"first", @"coffee"];
+    NSString *currentShirt = shirts[self.shirtIndex % [shirts count]];
+    self.teeView.image = [UIImage imageNamed:currentShirt];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,43 +77,43 @@ RNG rng(12345);
     
     //-- Detect faces
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
-
+    
+    for( size_t i = 0; i < faces.size(); i++ )
+    {
+        if (i > 0) { return; }
+        
+        int estimatedNeckLength = faces[i].height * 1.2;
+        int estimatedShirtX = faces[i].x + faces[i].width*0.5;
+        int estimatedShirtY = faces[i].y + faces[i].height + estimatedNeckLength;
+        
+        cv::Point center(estimatedShirtX, estimatedShirtY);
+        ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
     dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
     dispatch_async(backgroundQueue, ^{
-        for( size_t i = 0; i < faces.size(); i++ )
-        {
-            if (i > 0) { return; }
-         
-            int estimatedShirtX = faces[i].x + faces[i].width*0.5;
-            int estimatedShirtY = faces[i].y + faces[i].height + faces[i].height*1.2;
-            
-            cv::Point center(estimatedShirtX, estimatedShirtY);
-           // ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
-            
+        if (self.teeView.image == NULL) {
+            return;
+        }
+            CGFloat numberOfFacesPerShirt = 2.8;
             
             CGFloat imageHeight = self.teeView.image.size.height;
             CGFloat faceHeight = faces[i].height;
-            CGFloat desiredImageHeight = faceHeight * 2.8
-            ;
-            CGFloat scaleFactor = imageHeight / desiredImageHeight;
-            
+            CGFloat desiredImageHeight = faceHeight * numberOfFacesPerShirt;
+        CGFloat desiredImageWidth = faces[i].width * 2.2;
+            CGFloat scaleFactorH = imageHeight / desiredImageHeight;
+        CGFloat scaleFactorW = self.teeView.image.size.width / desiredImageWidth;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"it executed");
-                CGFloat scaledImageWidth = self.teeView.image.size.width / scaleFactor;
-                CGFloat scaledImageHeight = self.teeView.image.size.height / scaleFactor;
-                CGFloat leftX = faces[i].x - faces[i].width*0.5 - scaledImageWidth * 0.45;
-                CGFloat topY = faces[i].y + faces[i].height * 0.45;
-                NSLog(@"%f", scaledImageHeight);
-                NSLog(@"%f", scaledImageWidth);
-                NSLog(@"%f", leftX);
-                NSLog(@"%f", topY);
-                self.teeView.frame = CGRectMake(leftX, topY, scaledImageWidth, scaledImageHeight);
+                CGFloat scaledImageWidth = self.teeView.image.size.width / scaleFactorW;
+                CGFloat scaledImageHeight = self.teeView.image.size.height / scaleFactorH;
+                
+                CGFloat shirtX = faces[i].x - faces[i].width*0.5 - scaledImageWidth * 0.45;
+                CGFloat shirtY = faces[i].y + faceHeight * 0.45;
+                self.teeView.frame = CGRectMake(shirtX, shirtY, scaledImageWidth, scaledImageHeight);
                 [self.view bringSubviewToFront:self.teeView];
+            
             });
-        }
-
     });
+    }
 }
 
 - (void)processImage:(Mat&)image {
