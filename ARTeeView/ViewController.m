@@ -34,9 +34,9 @@ RNG rng(12345);
 @implementation ViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self._img = [UIImageView new];
-    
+
     self.camera = [[CvVideoCamera alloc] initWithParentView: self.view];
     self.camera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     self.camera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
@@ -44,23 +44,29 @@ RNG rng(12345);
     self.camera.defaultFPS = 30;
     self.camera.grayscaleMode = NO;
     self.camera.delegate = self;
-    
-    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"first"]];
-    
+
+    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"she_persisted"]];
+
     dispatch_async(dispatch_get_main_queue(), ^{
         self.teeView.hidden = YES;
     });
 
-    self.topBarView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"TopBar"]];
+    UIImage *logoImage = [UIImage imageNamed:@"TeeViewLogo" ];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
+    logoImageView.contentMode = UIViewContentModeCenter;
+
+    CGFloat screenWidth = self.view.frame.size.width;
+    self.topBarView = logoImageView;
+    self.topBarView.frame = CGRectMake(0, 0, screenWidth, 60.0);
+    self.topBarView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.camera start];
-    
+
     [self.view addSubview:self.teeView];
     self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
     [self.view addSubview:self.topBarView];
-    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 60.0);
     self.topBarView.layer.zPosition = 1;
 }
 
@@ -92,40 +98,37 @@ RNG rng(12345);
 
     cvtColor( frame, frame_gray, CV_BGR2GRAY );
     equalizeHist( frame_gray, frame_gray );
-    
+
     //-- Detect faces
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
     dispatch_async(dispatch_get_main_queue(), ^{
-        
+
         if (faces.empty()) {
             self.teeView.hidden = YES;
             return;
         } else {
             self.teeView.hidden = NO;
         }
-        
+
         cv::Rect faceRect = faces[0];
-        
+
         int estimatedShirtX = faces[0].x + faces[0].width * 0.5;
         int estimatedShirtY = faces[0].y + faces[0].height * 0.5;
-        
+
         cv::Point center(estimatedShirtX, estimatedShirtY);
-        
+
         CGRect screenBounds = [[UIScreen mainScreen] bounds];
         CGFloat screenWidth = screenBounds.size.width;
         CGFloat screenHeight = screenBounds.size.height;
-        
+
         CGFloat desiredWidth = screenWidth * 3.15 * faceRect.width / 480.0;
         CGFloat desiredHeight = screenHeight * 3.6 * faceRect.height / 640.0;
-        
+
         CGFloat faceX = screenWidth * center.x / 480.0 - desiredWidth * 0.5;
         CGFloat faceY = screenHeight * center.y / 640.0 - desiredHeight * 0.5;
-        
-        //NSLog(@"(%d, %d)", center.x, center.y);
-        //NSLog(@"(%d, %d)", faces[i].x, faces[i].y);
 
         CGFloat chinY = faceY + faceRect.height * 0.5 + desiredHeight * 0.5;
-        
+
         self.teeView.frame = CGRectMake(faceX, chinY, desiredWidth, desiredHeight);
         [self.view bringSubviewToFront:self.teeView];
     });
