@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA9EA3441E8DDA14001E9E5C /* ImageUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA9EA3431E8DDA14001E9E5C /* ImageUtils.mm */; };
 		FACE80DD1E8C855E00D8E253 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACE80DC1E8C855E00D8E253 /* opencv2.framework */; };
-		FACE80E41E8D959300D8E253 /* ImageUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = FACE80E31E8D959300D8E253 /* ImageUtils.mm */; };
 		FACE80E61E8D96F000D8E253 /* haarcascade_frontalface_alt.xml in Resources */ = {isa = PBXBuildFile; fileRef = FACE80E51E8D96F000D8E253 /* haarcascade_frontalface_alt.xml */; };
 		FACE80E81E8D971100D8E253 /* haarcascade_eye_tree_eyeglasses.xml in Resources */ = {isa = PBXBuildFile; fileRef = FACE80E71E8D971100D8E253 /* haarcascade_eye_tree_eyeglasses.xml */; };
 		FAFAB8841E8C56BD0019E268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFAB8831E8C56BD0019E268 /* main.m */; };
@@ -42,10 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA9EA3421E8DDA14001E9E5C /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageUtils.h; path = ARTeeView/ImageUtils.h; sourceTree = "<group>"; };
+		FA9EA3431E8DDA14001E9E5C /* ImageUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ImageUtils.mm; path = ARTeeView/ImageUtils.mm; sourceTree = "<group>"; };
 		FACE80DC1E8C855E00D8E253 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ARTeeView/v2.4.13/opencv2.framework; sourceTree = "<group>"; };
 		FACE80DE1E8C920500D8E253 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = ARTeeView/PrefixHeader.pch; sourceTree = "<group>"; };
-		FACE80E21E8D959300D8E253 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageUtils.h; path = ../../altaibayar/toptal_logo_detector/LogoDetector/LogoDetector/Utils/ImageUtils.h; sourceTree = "<group>"; };
-		FACE80E31E8D959300D8E253 /* ImageUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ImageUtils.mm; path = ../../altaibayar/toptal_logo_detector/LogoDetector/LogoDetector/Utils/ImageUtils.mm; sourceTree = "<group>"; };
 		FACE80E51E8D96F000D8E253 /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_frontalface_alt.xml; path = ../../../../Downloads/haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
 		FACE80E71E8D971100D8E253 /* haarcascade_eye_tree_eyeglasses.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_eye_tree_eyeglasses.xml; path = ../../../../Downloads/haarcascade_eye_tree_eyeglasses.xml; sourceTree = "<group>"; };
 		FAFAB87F1E8C56BD0019E268 /* ARTeeView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTeeView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,8 +101,8 @@
 		FACE80E11E8D94CE00D8E253 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FACE80E21E8D959300D8E253 /* ImageUtils.h */,
-				FACE80E31E8D959300D8E253 /* ImageUtils.mm */,
+				FA9EA3421E8DDA14001E9E5C /* ImageUtils.h */,
+				FA9EA3431E8DDA14001E9E5C /* ImageUtils.mm */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFAB88A1E8C56BD0019E268 /* ViewController.m in Sources */,
-				FACE80E41E8D959300D8E253 /* ImageUtils.mm in Sources */,
+				FA9EA3441E8DDA14001E9E5C /* ImageUtils.mm in Sources */,
 				FAFAB8871E8C56BD0019E268 /* AppDelegate.m in Sources */,
 				FAFAB8841E8C56BD0019E268 /* main.m in Sources */,
 			);
