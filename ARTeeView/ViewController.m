@@ -28,6 +28,7 @@ string window_name = "Capture - Face detection";
 RNG rng(12345);
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
 
 @end
 
@@ -51,7 +52,7 @@ RNG rng(12345);
         self.teeView.hidden = YES;
     });
 
-    UIImage *logoImage = [UIImage imageNamed:@"TeeViewLogo" ];
+    UIImage *logoImage = [UIImage imageNamed:@"TeeViewLogo"];
     UIImageView *logoImageView = [[UIImageView alloc] initWithImage:logoImage];
     logoImageView.contentMode = UIViewContentModeCenter;
 
@@ -61,13 +62,22 @@ RNG rng(12345);
     self.topBarView.backgroundColor = [UIColor whiteColor];
 }
 
+- (IBAction)cameraButtonPressed:(id)sender {
+    [self captureImage];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [self.camera start];
 
-    [self.view addSubview:self.teeView];
+    [self.view insertSubview:self.teeView belowSubview:self.cameraButton];
     self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
-    [self.view addSubview:self.topBarView];
+    self.teeView.userInteractionEnabled = NO;
+    
+    [self.view insertSubview:self.topBarView belowSubview:self.cameraButton];
     self.topBarView.layer.zPosition = 1;
+    
+    [self.view insertSubview:self.cameraButton atIndex:self.view.subviews.count - 1];
+    self.cameraButton.layer.zPosition = 1;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -81,10 +91,6 @@ RNG rng(12345);
     NSArray *shirts = @[@"she_persisted", @"rubicks", @"hackathon", @"first", @"coffee"];
     NSString *currentShirt = shirts[self.shirtIndex % [shirts count]];
     self.teeView.image = [UIImage imageNamed:currentShirt];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.teeView.hidden = NO;
-    });
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,11 +102,11 @@ RNG rng(12345);
     std::vector<cv::Rect> faces;
     Mat frame_gray;
 
-    cvtColor( frame, frame_gray, CV_BGR2GRAY );
-    equalizeHist( frame_gray, frame_gray );
+    cvtColor(frame, frame_gray, CV_BGR2GRAY);
+    equalizeHist(frame_gray, frame_gray);
 
     //-- Detect faces
-    face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
+    face_cascade.detectMultiScale(frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30));
     dispatch_async(dispatch_get_main_queue(), ^{
 
         if (faces.empty()) {
@@ -156,37 +162,32 @@ RNG rng(12345);
 
 - (void)captureImage
 {
-    AVCaptureSession *session = [[AVCaptureSession alloc] init];
-    session.sessionPreset = AVCaptureSessionPresetHigh;
+    CGRect rect = [[UIScreen mainScreen] bounds];
     
-    AVCaptureDevice *device = [self frontCamera];
+    CGSize imageSize = rect.size;
     
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGContextConcatCTM(ctx, [self.view.layer affineTransform]);
     
-    NSError *error = nil;
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-    if (!input) {
-        // Handle the error appropriately.
-        NSLog(@"no input.....");
+    if ([self.view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) { // iOS 7+
+        [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:YES];
+    } else { // iOS 6
+        [self.view.layer renderInContext:ctx];
     }
-    [session addInput:input];
+    UIImage *screengrab = UIGraphicsGetImageFromCurrentImageContext();
     
-    AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];
-    [session addOutput:output];
-    output.videoSettings = @{ (NSString *)kCVPixelBufferPixelFormatTypeKey : @(kCVPixelFormatType_32BGRA) };
+    CGContextRestoreGState(ctx);
+    UIGraphicsEndImageContext();
     
-    dispatch_queue_t queue = dispatch_queue_create("MyQueue", NULL);
-    
-    [output setSampleBufferDelegate:self queue:queue];
-    
-    [session startRunning];
-    
-    [session stopRunning];
+    UIImageWriteToSavedPhotosAlbum(screengrab, nil, nil, nil);
 }
 
-- (AVCaptureDevice *)frontCamera {
+- (AVCaptureDevice *)backCamera {
     NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     for (AVCaptureDevice *device in devices) {
-        if ([device position] == AVCaptureDevicePositionFront) {
+        if ([device position] == AVCaptureDevicePositionBack) {
             return device;
         }
     }
@@ -196,9 +197,10 @@ RNG rng(12345);
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-    
+    NSLog(@"clays a butt");
     CGImageRef cgImage = [self imageFromSampleBuffer:sampleBuffer];
     self.capturedImage = [UIImage imageWithCGImage: cgImage ];
+    
     CGImageRelease( cgImage );
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
