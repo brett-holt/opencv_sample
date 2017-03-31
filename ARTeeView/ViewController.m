@@ -45,10 +45,14 @@ RNG rng(12345);
     self.camera.grayscaleMode = NO;
     self.camera.delegate = self;
     
-    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@""]];
+    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"first"]];
     [self.view addSubview:self.teeView];
     self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
 
+    self.topBarView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"TopBar"]];
+    [self.view addSubview:self.topBarView];
+    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 80.0);
+    self.topBarView.layer.zPosition = 1;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -56,9 +60,13 @@ RNG rng(12345);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self captureImage];
-    NSLog(@"Screen was touched");
+//    [self captureImage];
+//    NSLog(@"Screen was touched");
     self.shirtIndex += 1;
+    [self updateShirt];
+}
+
+- (void)updateShirt {
     NSArray *shirts = @[@"tee", @"rubicks", @"hackathon", @"first", @"coffee"];
     NSString *currentShirt = shirts[self.shirtIndex % [shirts count]];
     self.teeView.image = [UIImage imageNamed:currentShirt];
@@ -72,94 +80,49 @@ RNG rng(12345);
 - (void) detectAndDisplay:(Mat)frame {
     std::vector<cv::Rect> faces;
     Mat frame_gray;
-    
+
     cvtColor( frame, frame_gray, CV_BGR2GRAY );
     equalizeHist( frame_gray, frame_gray );
     
     //-- Detect faces
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
     
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenBounds.size.width;
-    CGFloat screenHeight = screenBounds.size.height;
-    
-    
-    for( size_t i = 0; i < faces.size(); i++ )
-    {
-        if (i > 0) { return; }
-        
-        
-        
-        int estimatedNeckLength = faces[i].height * 1.2;
-        int estimatedShirtX = faces[i].x + faces[i].width * 0.5;
-        int estimatedShirtY = faces[i].y + faces[i].height * 0.5;
-        
-        
-        cv::Point center(estimatedShirtX, estimatedShirtY);
-        
-        CGFloat cvFaceX = faces[i].x + faces[i].width * 0.5;
-        CGFloat cvFaceY = faces[i].x + faces[i].width * 0.5;
-        
-        
-        
-        
-        CGFloat originalImageWidth = [[self.teeView image] size].width;
-        CGFloat originalImageHeight = [[self.teeView image] size].height;
-        
-        CGFloat desiredWidth = screenWidth * 3.0 * faces[i].width / 480.0;
-        CGFloat desiredHeight = screenHeight * 4.0 * faces[i].height / 640.0;
+    if (faces.empty()) {
+        NSLog(@"Faces empty");
+        [self.teeView setAlpha:0];
+        [self.view.subviews setValue:@YES forKeyPath:@"hidden"];
+        return;
+    } else {
+        [self.teeView setAlpha:1.0];
+        [self.view.subviews setValue:@NO forKeyPath:@"hidden"];
+    }
 
+    cv::Rect faceRect = faces[0];
+    
+    int estimatedShirtX = faces[0].x + faces[0].width * 0.5;
+    int estimatedShirtY = faces[0].y + faces[0].height * 0.5;
+    
+    cv::Point center(estimatedShirtX, estimatedShirtY);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenBounds.size.width;
+        CGFloat screenHeight = screenBounds.size.height;
+        
+        CGFloat desiredWidth = screenWidth * 3.15 * faceRect.width / 480.0;
+        CGFloat desiredHeight = screenHeight * 3.6 * faceRect.height / 640.0;
         
         CGFloat faceX = screenWidth * center.x / 480.0 - desiredWidth * 0.5;
         CGFloat faceY = screenHeight * center.y / 640.0 - desiredHeight * 0.5;
         
-        CGFloat estimatedNeckLengthRelativeToFace = 1.0;
-        CGFloat estimatedNeckLengthInView = screenHeight * estimatedNeckLengthRelativeToFace * faces[i].height / 640.0;
-        
         //NSLog(@"(%d, %d)", center.x, center.y);
-        NSLog(@"(%d, %d)", faces[i].x, faces[i].y);
-        ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
+        //NSLog(@"(%d, %d)", faces[i].x, faces[i].y);
+
+        CGFloat chinY = faceY + faceRect.height * 0.5 + desiredHeight * 0.5;
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            CGFloat chinY = faceY + faces[i].height * 0.5 + desiredHeight * 0.5;
-            
-            
-            CGFloat scaleX = desiredWidth / [self.teeView.image size].width;
-            CGFloat scaleY = desiredHeight / [self.teeView.image size].height;
-            
-            self.teeView.frame = CGRectMake(faceX, chinY, desiredWidth, desiredHeight);
-            [self.view bringSubviewToFront:self.teeView];
-        });
-        
-        /*
-    dispatch_queue_t backgroundQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, NULL);
-    dispatch_async(backgroundQueue, ^{
-        if (self.teeView.image == NULL) {
-            return;
-        }
-            CGFloat numberOfFacesPerShirt = 2.8;
-            
-            CGFloat imageHeight = self.teeView.image.size.height;
-            CGFloat faceHeight = faces[i].height;
-            CGFloat desiredImageHeight = faceHeight * numberOfFacesPerShirt;
-        CGFloat desiredImageWidth = faces[i].width * 2.2;
-            CGFloat scaleFactorH = imageHeight / desiredImageHeight;
-        CGFloat scaleFactorW = self.teeView.image.size.width / desiredImageWidth;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                CGFloat scaledImageWidth = self.teeView.image.size.width / scaleFactorW;
-                CGFloat scaledImageHeight = self.teeView.image.size.height / scaleFactorH;
-                
-                CGFloat shirtX = faces[i].x - faces[i].width*0.5 - scaledImageWidth * 0.45;
-                CGFloat shirtY = faces[i].y + faceHeight * 0.45;
-                //self.teeView.frame = CGRectMake(shirtX, shirtY, scaledImageWidth, scaledImageHeight);
-                self.teeView.frame = CGRectMake(faceX - self.teeView.frame.size.width * 0.5, faceY - self.teeView.frame.size.height * 0.5, self.teeView.frame.size.width, self.teeView.frame.size.height);
-                [self.view bringSubviewToFront:self.teeView];
-            
-            });
+        self.teeView.frame = CGRectMake(faceX, chinY, desiredWidth, desiredHeight);
+        [self.view bringSubviewToFront:self.teeView];
     });
-         */
-    }
 }
 
 - (void)processImage:(Mat&)image {
@@ -171,7 +134,7 @@ RNG rng(12345);
     Mat frame = image;
     
     const char* facePath = [[NSBundle mainBundle] pathForResource:@"haarcascade_frontalface_alt" ofType:@"xml"].cString;
-    
+
     //-- 1. Load the cascades
     if( !face_cascade.load( facePath ) ){ printf("--(!)Error loading\n"); };
     
@@ -224,7 +187,6 @@ RNG rng(12345);
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-    
     
     CGImageRef cgImage = [self imageFromSampleBuffer:sampleBuffer];
     self.capturedImage = [UIImage imageWithCGImage: cgImage ];

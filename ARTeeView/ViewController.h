@@ -17,6 +17,7 @@
 @property UIImageView* _img;
 
 @property UIImageView *teeView;
+@property UIImageView *topBarView;
 @property int shirtIndex;
 
 
