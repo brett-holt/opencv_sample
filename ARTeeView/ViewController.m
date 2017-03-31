@@ -45,7 +45,7 @@ RNG rng(12345);
     self.camera.grayscaleMode = NO;
     self.camera.delegate = self;
     
-    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"dot"]];
+    self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@""]];
     [self.view addSubview:self.teeView];
     self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
 
@@ -99,13 +99,21 @@ RNG rng(12345);
         
         CGFloat cvFaceX = faces[i].x + faces[i].width * 0.5;
         CGFloat cvFaceY = faces[i].x + faces[i].width * 0.5;
+        
+        
+        
+        
+        CGFloat originalImageWidth = [[self.teeView image] size].width;
+        CGFloat originalImageHeight = [[self.teeView image] size].height;
+        
+        CGFloat desiredWidth = screenWidth * 3.0 * faces[i].width / 480.0;
+        CGFloat desiredHeight = screenHeight * 4.0 * faces[i].height / 640.0;
 
         
+        CGFloat faceX = screenWidth * center.x / 480.0 - desiredWidth * 0.5;
+        CGFloat faceY = screenHeight * center.y / 640.0 - desiredHeight * 0.5;
         
-        CGFloat faceX = screenWidth * center.x / 480.0 - [self.teeView.image size].height * 0.5;
-        CGFloat faceY = screenHeight * center.y / 640.0 - [self.teeView.image size].width * 0.5;
-        
-        CGFloat estimatedNeckLengthRelativeToFace = 1.2;
+        CGFloat estimatedNeckLengthRelativeToFace = 1.0;
         CGFloat estimatedNeckLengthInView = screenHeight * estimatedNeckLengthRelativeToFace * faces[i].height / 640.0;
         
         //NSLog(@"(%d, %d)", center.x, center.y);
@@ -113,7 +121,13 @@ RNG rng(12345);
         ellipse( frame, center, cv::Size( faces[i].width*0.5, faces[i].height*0.5), 0, 0, 360, cv::Scalar( 255, 0, 255 ), 4, 8, 0 );
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.teeView.frame = CGRectMake(faceX, faceY + estimatedNeckLengthInView, [self.teeView.image size].width, [self.teeView.image size].height);
+            CGFloat chinY = faceY + faces[i].height * 0.5 + desiredHeight * 0.5;
+            
+            
+            CGFloat scaleX = desiredWidth / [self.teeView.image size].width;
+            CGFloat scaleY = desiredHeight / [self.teeView.image size].height;
+            
+            self.teeView.frame = CGRectMake(faceX, chinY, desiredWidth, desiredHeight);
             [self.view bringSubviewToFront:self.teeView];
         });
         
