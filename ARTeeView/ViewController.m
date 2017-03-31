@@ -51,7 +51,7 @@ RNG rng(12345);
 
     self.topBarView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"TopBar"]];
     [self.view addSubview:self.topBarView];
-    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 80.0);
+    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 60.0);
     self.topBarView.layer.zPosition = 1;
 }
 
@@ -67,7 +67,7 @@ RNG rng(12345);
 }
 
 - (void)updateShirt {
-    NSArray *shirts = @[@"tee", @"rubicks", @"hackathon", @"first", @"coffee"];
+    NSArray *shirts = @[@"she_persisted", @"rubicks", @"hackathon", @"first", @"coffee"];
     NSString *currentShirt = shirts[self.shirtIndex % [shirts count]];
     self.teeView.image = [UIImage imageNamed:currentShirt];
 }
@@ -86,25 +86,22 @@ RNG rng(12345);
     
     //-- Detect faces
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 5, 0|CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
-    
-    if (faces.empty()) {
-        NSLog(@"Faces empty");
-        [self.teeView setAlpha:0];
-        [self.view.subviews setValue:@YES forKeyPath:@"hidden"];
-        return;
-    } else {
-        [self.teeView setAlpha:1.0];
-        [self.view.subviews setValue:@NO forKeyPath:@"hidden"];
-    }
-
-    cv::Rect faceRect = faces[0];
-    
-    int estimatedShirtX = faces[0].x + faces[0].width * 0.5;
-    int estimatedShirtY = faces[0].y + faces[0].height * 0.5;
-    
-    cv::Point center(estimatedShirtX, estimatedShirtY);
-
     dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (faces.empty()) {
+            self.teeView.hidden = YES;
+            return;
+        } else {
+            self.teeView.hidden = NO;
+        }
+        
+        cv::Rect faceRect = faces[0];
+        
+        int estimatedShirtX = faces[0].x + faces[0].width * 0.5;
+        int estimatedShirtY = faces[0].y + faces[0].height * 0.5;
+        
+        cv::Point center(estimatedShirtX, estimatedShirtY);
+        
         CGRect screenBounds = [[UIScreen mainScreen] bounds];
         CGFloat screenWidth = screenBounds.size.width;
         CGFloat screenHeight = screenBounds.size.height;
