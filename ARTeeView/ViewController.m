@@ -46,17 +46,22 @@ RNG rng(12345);
     self.camera.delegate = self;
     
     self.teeView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"first"]];
-    [self.view addSubview:self.teeView];
-    self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.teeView.hidden = YES;
+    });
 
     self.topBarView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"TopBar"]];
-    [self.view addSubview:self.topBarView];
-    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 60.0);
-    self.topBarView.layer.zPosition = 1;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.camera start];
+    
+    [self.view addSubview:self.teeView];
+    self.teeView.frame = CGRectMake(200.0, 210.0, 200.0, 200.0);
+    [self.view addSubview:self.topBarView];
+    self.topBarView.frame = CGRectMake(0.0, 0.0, 380.0, 60.0);
+    self.topBarView.layer.zPosition = 1;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -70,6 +75,10 @@ RNG rng(12345);
     NSArray *shirts = @[@"she_persisted", @"rubicks", @"hackathon", @"first", @"coffee"];
     NSString *currentShirt = shirts[self.shirtIndex % [shirts count]];
     self.teeView.image = [UIImage imageNamed:currentShirt];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.teeView.hidden = NO;
+    });
+
 }
 
 - (void)didReceiveMemoryWarning {
