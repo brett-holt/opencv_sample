@@ -10,7 +10,7 @@
 #endif”
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController <CvVideoCameraDelegate>
+@interface ViewController : UIViewController <CvVideoCameraDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property CvVideoCamera *camera;
 @property int count;
@@ -18,6 +18,9 @@
 
 @property UIImageView *teeView;
 @property int shirtIndex;
+
+
+@property (nonatomic, strong) UIImage *capturedImage;
 
 @end
 
